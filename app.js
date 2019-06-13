@@ -6,7 +6,7 @@ var request = require("request");
 var fs = require('fs');
 var AWS = require('aws-sdk')
 var s3 = new AWS.S3()
-
+require('dotenv').config()
 app.use(express.json());
 
 app.post('/', function (req, res) {
@@ -26,7 +26,7 @@ app.post('/', function (req, res) {
 
     var options = {
         method: 'POST',
-        url: 'https://api.alumai.com/census/v1/customer/105928/campaign/0250598/inline/test',
+        url: process.env.theapiurl,
         headers: {
             'content-type': 'application/json',
             'x-api-key': `${apiKey}`
